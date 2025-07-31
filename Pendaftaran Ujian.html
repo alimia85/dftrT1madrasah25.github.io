@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Ujian Kemasukan Tahun 1 - SK (A) Datuk Haji Abdul Kadir Hassan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .header-bg {
+            background: linear-gradient(135deg, #244F4B 0%, #40E0D0 100%);
+        }
+        .form-container {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #244F4B 0%, #40E0D0 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(64, 224, 208, 0.4);
+        }
+        .step-indicator {
+            transition: all 0.3s ease;
+        }
+        .step-active {
+            background-color: #244F4B;
+            color: white;
+        }
+        .loader {
+            border-top-color: #40E0D0;
+            -webkit-animation: spinner 1.5s linear infinite;
+            animation: spinner 1.5s linear infinite;
+        }
+        @-webkit-keyframes spinner {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes spinner {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .registration-option:hover {
+            border-color: #40E0D0;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(64, 224, 208, 0.2);
+        }
+        .registration-option {
+            transition: all 0.3s ease;
+        }
+        .text-primary {
+            color: #244F4B;
+        }
+        .bg-primary-light {
+            background-color: rgba(64, 224, 208, 0.1);
+        }
+        .border-primary {
+            border-color: #40E0D0;
+        }
+        .icon-3d {
+            filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.2));
+            transition: all 0.3s ease;
+        }
+        .registration-option:hover .icon-3d {
+            transform: scale(1.1);
+            filter: drop-shadow(4px 4px 3px rgba(0, 0, 0, 0.3));
+        }
+        .deadline-box {
+            background-color: #FFDE59;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="header-bg text-white py-8 relative">
+            <div class="container mx-auto px-4 md:px-6">
+                <div class="flex items-center mb-4">
+                    <img src="https://iili.io/FSsa0pj.md.png" alt="Logo Sekolah" class="h-24 w-auto mr-6">
+                    <div class="flex-grow">
+                        <h1 class="text-2xl md:text-3xl font-bold tracking-wide text-center md:text-left">SK (A) DATUK HAJI ABDUL KADIR HASSAN</h1>
+                    </div>
+                </div>
+                <div class="h-1 bg-white w-full my-3"></div>
+                <p class="text-center md:text-left text-lg">Pendaftaran Ujian Kemasukan Tahun 1 Sesi Akademik 2026</p>
+                <div class="deadline-box text-[#244F4B] px-6 py-3 rounded-lg font-bold absolute bottom-4 right-4 md:right-10">
+                    Tarikh Tutup: 31 Oktober 2025
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow container mx-auto px-4 md:px-6 py-8">
+            <div class="form-container bg-white rounded-lg p-6 md:p-8">
+                <!-- Registration Type Selection -->
+                <div id="registration-type-section" class="mb-8">
+                    <h2 class="text-xl md:text-2xl font-bold text-[#244F4B] mb-6 text-center">Jenis Pendaftaran</h2>
+                    <p class="text-gray-600 mb-6 text-center">Sila pilih jenis pendaftaran yang ingin dilakukan:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="registration-option border rounded-lg p-8 hover:border-[#40E0D0] cursor-pointer transition-all bg-white shadow-sm" onclick="selectRegistrationType('tadika')">
+                            <div class="flex flex-col items-center mb-6">
+                                <div class="h-20 w-20 rounded-full bg-[#40E0D0] bg-opacity-20 flex items-center justify-center mb-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-[#244F4B] icon-3d" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M17 20C17 18.3431 14.7614 17 12 17C9.23858 17 7 18.3431 7 20" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M14 13H17L19 15" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M10 13H7L5 15" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl font-bold text-[#244F4B] text-center">Pendaftaran Melalui Tadika</h3>
+                            </div>
+                            <p class="text-gray-600 text-center">Untuk pendaftaran beberapa calon dari tadika yang sama secara sekaligus.</p>
+                        </div>
+                        
+                        <div class="registration-option border rounded-lg p-8 hover:border-[#40E0D0] cursor-pointer transition-all bg-white shadow-sm" onclick="selectRegistrationType('persendirian')">
+                            <div class="flex flex-col items-center mb-6">
+                                <div class="h-20 w-20 rounded-full bg-[#40E0D0] bg-opacity-20 flex items-center justify-center mb-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-[#244F4B] icon-3d" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl font-bold text-[#244F4B] text-center">Pendaftaran Calon Persendirian</h3>
+                            </div>
+                            <p class="text-gray-600 text-center">Untuk pendaftaran seorang calon secara individu.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tadika Registration Form -->
+                <div id="tadika-form" class="hidden">
+                    <div class="flex items-center mb-6">
+                        <button onclick="backToRegistrationType()" class="mr-4 text-[#40E0D0] hover:text-[#244F4B]">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <h2 class="text-xl md:text-2xl font-bold text-[#244F4B]">Pendaftaran Melalui Tadika</h2>
+                    </div>
+
+                    <!-- Step Indicators -->
+                    <div class="flex mb-8">
+                        <div class="step-indicator step-active flex-1 text-center py-2 rounded-l-lg">1. Maklumat Tadika</div>
+                        <div id="step-students" class="step-indicator flex-1 text-center py-2 bg-gray-200">2. Maklumat Calon</div>
+                        <div class="step-indicator flex-1 text-center py-2 rounded-r-lg bg-gray-200">3. Pengesahan</div>
+                    </div>
+
+                    <!-- Tadika Info Form -->
+                    <div id="tadika-info-form">
+                        <div class="mb-6">
+                            <h3 class="text-lg font-bold text-[#244F4B] mb-4">Maklumat Asas Tadika</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label for="tadika-name" class="block text-gray-700 font-medium mb-2">Nama Tadika <span class="text-red-500">*</span></label>
+                                    <input type="text" id="tadika-name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#40E0D0]" placeholder="Contoh: Tadika Ceria">
+                                </div>
+                                <div>
+                                    <label for="tadika-phone" class="block text-gray-700 font-medium mb-2">No. Telefon Tadika <span class="text-red-500">*</span></label>
+                                    <input type="tel" id="tadika-phone" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#40E0D0]" placeholder="Contoh: 03-12345678">
+                                </div>
+                            </div>
+
+                            <div class="mb-6">
+                                <label for="tadika-address" class="block text-gray-700 font-medium mb-2">Alamat Tadika <span class="text-red-500">*</span></label>
+                                <textarea id="tadika-address" rows="3" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#40E0D0]" placeholder="Contoh: 123, Jalan Ceria, Taman Bahagia"></textarea>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label for="tadika-email" class="block text-gray-700 font-medium mb-2">Emel <span class="text-red-500">*</span></label>
+                                    <input type="email" id="tadika-email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#40E0D0]" placeholder="Contoh: info@tadikaceria.com">
+                                </div>
+                                <div>
+                                    <label for="teacher-name" class="block text-gray-700 font-medium mb-2">Nama Guru Besar / Pengurus <span class="text-red-500">*</span></label>
+                                    <input type="text" id="teacher-name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#40E0D0]" placeholder="Contoh: Puan Aminah binti Abdullah">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-8">
+                            <h3 class="text-lg font-bold text-[#244F4B] mb-4">Bilangan Calon</h3>
+                            <div>
+                                <label for="student-count" class="block text-gray-700 font-medium mb-2">Bilangan Calon Yang Hendak Didaftar <span class="text-red-500">*</span></label>
+                                <input type="number" id="student-count" min="1" max="30" class="w-full md:w-1/3 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#40E0D0]" placeholder="Contoh: 5">
+                                <p class="text-sm text-gray-500 mt-2">Maksimum 30 calon dalam satu pendaftaran</p>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end">
+                            <button onclick="goToStudentInfo()" class="btn-primary text-white px-6 py-2 rounded-lg font-medium">Seterusnya</button>
+                        </div>
+                    </div>
+
+                    <!-- Student Info Form -->
+                    <div id="tadika-student-form" class="hidden">
+                        <div id="students-container">
+                            <!-- Student forms will be generated here -->
+                        </div>
+
+                        <div class="flex justify-between mt-8">
+                            <button onclick="backToTadikaInfo()" class="border border-[#244F4B] text-[#244F4B] px-6 py-2 rounded-lg font-medium hover:bg-[#40E0D0] hover:bg-opacity-10">Kembali</button>
+                            <button onclick="goToConfirmation('tadika')" class="btn-primary text-white px-6 py-2 rounded-lg font-medium">Seterusnya</button>
+                        </div>
+                    </div>
+
+                    <!-- Confirmation Page -->
+                    <div id="tadika-confirmation" class="hidden">
+                        <div class="bg-[#40E0D0] bg-opacity-10 border border-[#40E0D0] rounded-lg p-6 mb-8">
+                            <h3 class="text-lg font-bold text-[#244F4B] mb-4">Ringkasan Pendaftaran</h3>
+                            <div id="tadika-summary">
+                                <!-- Summary will be generated here -->
+                            </div>
+                        </div>
+
+                        <div class="mb-6">
+                            <label class="flex items-center">
+                                <input type="checkbox" id="tadika-confirm-checkbox" class="h-5 w-5 text-[#40E0D0]">
+                                <span class="ml-2 text-gray-700">Saya mengesahkan bahawa semua maklumat yang diberikan adalah benar dan tepat.</span>
+                            </label>
+                        </div>
+
+                        <div class="flex justify-between">
+                            <button onclick="backToStudentInfo()" class="border border-[#244F4B] text-[#244F4B] px-6 py-2 rounded-lg font-medium hover:bg-[#40E0D0] hover:bg-opacity-10">Kembali</button>
+                            <button onclick="submitForm('tadika')" id="tadika-submit-btn" class="btn-primary text-white px-6 py-2 rounded-lg font-medium opacity-50 cursor-not-allowed" disabled>Hantar Pendaftaran</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Persendirian Registration Form -->
+                <div id="persendirian-form" class="hidden">
+                    <div class="flex items-center mb-6">
+                        <button onclick="backToRegistrationType()" class="mr-4 text-[#40E0D0] hover:text-[#244F4B]">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <h2 class="text-xl md:text-2xl font-bold text-[#244F4B]">Pendaftaran Calon Persendirian</h2>
+                    </div>
+
+                    <!-- Step Indicators -->
+                    <div class="flex mb-8">
+                        <div class="step-indicator step-active flex-1 text-center py-2 rounded-l-lg">1. Maklumat Calon</div>
+                        <div class="step-indicator flex-1 text-center py-2 rounded-r-lg bg-gray-200">2. Pengesahan</div>
+                    </div>
+
+                    <!-- Persendirian Info Form -->
+                    <div id="persendirian-info-form">
+                        <div class="mb-6">
+                            <h3 class="text-lg font-bold text-[#244F4B] mb-4">Maklumat Calon</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label for="persendirian-tadika" class="block text-gray-700 font-medium mb-2">Nama Tadika <span class="text-red-500">*</span></label>
+                                    <input type="text" id="persendirian-tadika" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#40E0D0]" placeholder="Contoh: Tadika Ceria">
+                                </div>
+                                <div>
+                                    <label for="persendirian-name" class="block text-gray-700 font-medium mb-2">Nama Penuh Calon <span class="text-red-500">*</span></label>
+                                    <input type="text" id="persendirian-name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#40E0D0]" placeholder="Contoh: Ahmad bin Abdullah">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label for="persendirian-ic" class="block text-gray-700 font-medium mb-2">No. MyKid <span class="text-red-500">*</span></label>
+                                    <input type="text" id="persendirian-ic" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#40E0D0]" placeholder="Contoh: 200101012345">
+                                </div>
+                                <div>
+                                    <label for="persendirian-dob" class="block text-gray-700 font-medium mb-2">Tarikh Lahir <span class="text-red-500">*</span></label>
+                                    <input type="date" id="persendirian-dob" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#40E0D0]">
+                                </div>
+                            </div>
+
+                            <div class="mb-6">
+                                <label for="persendirian-gender" class="block text-gray-700 font-medium mb-2">Jantina <span class="text-red-500">*</span></label>
+                                <select id="persendirian-gender" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#40E0D0]">
+                                    <option value="">Pilih Jantina</option>
+                                    <option value="Lelaki">Lelaki</option>
+                                    <option value="Perempuan">Perempuan</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-6">
+                            <h3 class="text-lg font-bold text-[#244F4B] mb-4">Maklumat Ibu/Bapa/Penjaga</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label for="persendirian-parent-name" class="block text-gray-700 font-medium mb-2">Nama Ibu/Bapa/Penjaga <span class="text-red-500">*</span></label>
+                                    <input type="text" id="persendirian-parent-name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#40E0D0]" placeholder="Contoh: Abdullah bin Ahmad">
+                                </div>
+                                <div>
+                                    <label for="persendirian-parent-phone" class="block text-gray-700 font-medium mb-2">No. Telefon Ibu/Bapa/Penjaga <span class="text-red-500">*</span></label>
+                                    <input type="tel" id="persendirian-parent-phone" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#40E0D0]" placeholder="Contoh: 0123456789">
+                                </div>
+                            </div>
+
+                            <div class="mb-6">
+                                <label for="persendirian-email" class="block text-gray-700 font-medium mb-2">Emel <span class="text-red-500">*</span></label>
+                                <input type="email" id="persendirian-email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#40E0D0]" placeholder="Contoh: abdullah@email.com">
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end">
+                            <button onclick="goToConfirmation('persendirian')" class="btn-primary text-white px-6 py-2 rounded-lg font-medium">Seterusnya</button>
+                        </div>
+                    </div>
+
+                    <!-- Confirmation Page -->
+                    <div id="persendirian-confirmation" class="hidden">
+                        <div class="bg-[#40E0D0] bg-opacity-10 border border-[#40E0D0] rounded-lg p-6 mb-8">
+                            <h3 class="text-lg font-bold text-[#244F4B] mb-4">Ringkasan Pendaftaran</h3>
+                            <div id="persendirian-summary">
+                                <!-- Summary will be generated here -->
+                            </div>
+                        </div>
+
+                        <div class="mb-6">
+                            <label class="flex items-center">
+                                <input type="checkbox" id="persendirian-confirm-checkbox" class="h-5 w-5 text-[#40E0D0]">
+                                <span class="ml-2 text-gray-700">Saya mengesahkan bahawa semua maklumat yang diberikan adalah benar dan tepat.</span>
+                            </label>
+                        </div>
+
+                        <div class="flex justify-between">
+                            <button onclick="backToPersendirianInfo()" class="border border-[#244F4B] text-[#244F4B] px-6 py-2 rounded-lg font-medium hover:bg-[#40E0D0] hover:bg-opacity-10">Kembali</button>
+                            <button onclick="submitForm('persendirian')" id="persendirian-submit-btn" class="btn-primary text-white px-6 py-2 rounded-lg font-medium opacity-50 cursor-not-allowed" disabled>Hantar Pendaftaran</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loading Indicator -->
+                <div id="loading-indicator" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
+                    <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+                        <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
+                        <h2 class="text-lg font-semibold text-gray-700">Sedang Memproses...</h2>
+                        <p class="text-gray-600">Sila tunggu sebentar.</p>
+                    </div>
+                </div>
+
+                <!-- Success Message -->
+                <div id="success-message" class="hidden text-center py-12">
+                    <div class="inline-block p-6 bg-[#40E0D0] bg-opacity-20 rounded-full mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-[#244F4B]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-[#244F4B] mb-4">Pendaftaran Berjaya!</h2>
+                    <p class="text-gray-600 mb-8">Maklumat pendaftaran anda telah diterima. Sila simpan nombor rujukan berikut untuk rujukan masa hadapan.</p>
+                    <div class="bg-[#40E0D0] bg-opacity-10 border border-[#40E0D0] rounded-lg p-4 mb-8 inline-block">
+                        <p class="text-lg font-bold text-[#244F4B]" id="reference-number"></p>
+                    </div>
+                    <p class="text-gray-600 mb-6">Satu emel pengesahan akan dihantar ke alamat emel yang didaftarkan.</p>
+                    <button onclick="resetForm()" class="btn-primary text-white px-6 py-2 rounded-lg font-medium">Kembali ke Halaman Utama</button>
+                </div>
+
+                <!-- Error Message -->
+                <div id="error-message" class="hidden text-center py-12">
+                    <div class="inline-block p-6 bg-red-100 rounded-full mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Ralat!</h2>
+                    <p class="text-gray-600 mb-8" id="error-text">Maaf, terdapat masalah semasa memproses pendaftaran anda. Sila cuba lagi.</p>
+                    <button onclick="resetForm()" class="btn-primary text-white px-6 py-2 rounded-lg font-medium">Kembali ke Halaman Utama</button>
+                </div>
+                
+                <!-- Hidden iframe for form submission -->
+                <iframe name="hidden-iframe" id="hidden-iframe" style="display:none;"></iframe>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-[#244F4B] text-white py-6">
+            <div class="container mx-auto px-4 md:px-6">
+                <div class="flex flex-col md:flex-row justify-center items-center text-center">
+                    <p>Hak Cipta Terpelihara &copy; Madrasah V1/2025 &nbsp;|&nbsp; Hubungi Admin: 014-8983165 atau 016-8096409</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Global variables
+        let studentCount = 0;
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxJZnDySMG_SRSZ2CLWToMWHgENRV7PP_vUZtmHG0xqwGyEV03ddjWvoLtXXWcNPcymYw/exec';
+        
+        // Registration type selection
+        function selectRegistrationType(type) {
+            document.getElementById('registration-type-section').classList.add('hidden');
+            
+            if (type === 'tadika') {
+                document.getElementById('tadika-form').classList.remove('hidden');
+            } else if (type === 'persendirian') {
+                document.getElementById('persendirian-form').classList.remove('hidden');
+            }
+        }
+        
+        function backToRegistrationType() {
+            document.getElementById('registration-type-section').classList.remove('hidden');
+            document.getElementById('tadika-form').classList.add('hidden');
+            document.getElementById('persendirian-form').classList.add('hidden');
+        }
+        
+        // Tadika registration flow
+        function goToStudentInfo() {
+            // Validate tadika info
+            const tadikaName = document.getElementById('tadika-name').value;
+            const tadikaAddress = document.getElementById('tadika-address').value;
+            const tadikaPhone = document.getElementById('tadika-phone').value;
+            const tadikaEmail = document.getElementById('tadika-email').value;
+            const teacherName = document.getElementById('teacher-name').value;
+            studentCount = parseInt(document.getElementById('student-count').value);
+            
+            // Check required fields
+            if (!tadikaName || !tadikaAddress || !tadikaPhone || !tadikaEmail || !teacherName || 
+                isNaN(studentCount) || studentCount < 1) {
+                alert('Sila lengkapkan semua maklumat yang diperlukan.');
+                return;
+            }
+            
+            // Generate student forms based on count
+            generateStudentForms(studentCount);
+            
+            // Show student form section
+            document.getElementById('tadika-info-form').classList.add('hidden');
+            document.getElementById('tadika-student-form').classList.remove('hidden');
+            document.getElementById('step-students').classList.add('step-active');
+        }
+        
+        function generateStudentForms(count) {
+            const container = document.getElementById('students-container');
+            container.innerHTML = '';
+            
+            for (let i = 1; i <= count; i++) {
+                const studentForm = document.createElement('div');
+                studentForm.className = 'mb-8 p-6 border rounded-lg bg-[#40E0D0] bg-opacity-5';
+                studentForm.innerHTML = `
+                    <h3 class="text-lg font-bold text-[#244F4B] mb-4">Calon ${i}</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="student-name-${i}" class="block text-gray-700 font-medium mb-2">Nama Penuh <span class="text-red-500">*</span></label>
+                            <input type="text" id="student-name-${i}" name="student-name-${i}" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#40E0D0]" placeholder="Contoh: Ahmad bin Abdullah">
+                        </div>
+                        <div>
+                            <label for="student-ic-${i}" class="block text-gray-700 font-medium mb-2">No. MyKid <span class="text-red-500">*</span></label>
+                            <input type="text" id="student-ic-${i}" name="student-ic-${i}" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#40E0D0]" placeholder="Contoh: 200101012345">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="student-dob-${i}" class="block text-gray-700 font-medium mb-2">Tarikh Lahir <span class="text-red-500">*</span></label>
+                            <input type="date" id="student-dob-${i}" name="student-dob-${i}" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#40E0D0]">
+                        </div>
+                        <div>
+                            <label for="student-gender-${i}" class="block text-gray-700 font-medium mb-2">Jantina <span class="text-red-500">*</span></label>
+                            <select id="student-gender-${i}" name="student-gender-${i}" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#40E0D0]">
+                                <option value="">Pilih Jantina</option>
+                                <option value="Lelaki">Lelaki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="parent-name-${i}" class="block text-gray-700 font-medium mb-2">Nama Ibu/Bapa/Penjaga <span class="text-red-500">*</span></label>
+                            <input type="text" id="parent-name-${i}" name="parent-name-${i}" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#40E0D0]" placeholder="Contoh: Abdullah bin Ahmad">
+                        </div>
+                        <div>
+                            <label for="parent-phone-${i}" class="block text-gray-700 font-medium mb-2">No. Telefon Ibu/Bapa/Penjaga <span class="text-red-500">*</span></label>
+                            <input type="tel" id="parent-phone-${i}" name="parent-phone-${i}" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#40E0D0]" placeholder="Contoh: 0123456789">
+                        </div>
+                    </div>
+                `;
+                container.appendChild(studentForm);
+            }
+        }
+        
+        function backToTadikaInfo() {
+            document.getElementById('tadika-info-form').classList.remove('hidden');
+            document.getElementById('tadika-student-form').classList.add('hidden');
+            document.getElementById('step-students').classList.remove('step-active');
+        }
+        
+        function backToStudentInfo() {
+            document.getElementById('tadika-student-form').classList.remove('hidden');
+            document.getElementById('tadika-confirmation').classList.add('hidden');
+            
+            // Update step indicators
+            const stepIndicators = document.querySelectorAll('#tadika-form .step-indicator');
+            stepIndicators[2].classList.remove('step-active');
+        }
+        
+        // Persendirian registration flow
+        function backToPersendirianInfo() {
+            document.getElementById('persendirian-info-form').classList.remove('hidden');
+            document.getElementById('persendirian-confirmation').classList.add('hidden');
+            
+            // Update step indicators
+            const stepIndicators = document.querySelectorAll('#persendirian-form .step-indicator');
+            stepIndicators[1].classList.remove('step-active');
+        }
+        
+        // Confirmation page
+        function goToConfirmation(type) {
+            if (type === 'tadika') {
+                // Validate student info
+                let isValid = true;
+                for (let i = 1; i <= studentCount; i++) {
+                    const studentName = document.getElementById(`student-name-${i}`).value;
+                    const studentIC = document.getElementById(`student-ic-${i}`).value;
+                    const studentDOB = document.getElementById(`student-dob-${i}`).value;
+                    const studentGender = document.getElementById(`student-gender-${i}`).value;
+                    const parentName = document.getElementById(`parent-name-${i}`).value;
+                    const parentPhone = document.getElementById(`parent-phone-${i}`).value;
+                    
+                    if (!studentName || !studentIC || !studentDOB || !studentGender || !parentName || !parentPhone) {
+                        isValid = false;
+                        break;
+                    }
+                }
+                
+                if (!isValid) {
+                    alert('Sila lengkapkan semua maklumat calon.');
+                    return;
+                }
+                
+                // Generate summary
+                generateTadikaSummary();
+                
+                // Show confirmation section
+                document.getElementById('tadika-student-form').classList.add('hidden');
+                document.getElementById('tadika-confirmation').classList.remove('hidden');
+                
+                // Update step indicators
+                const stepIndicators = document.querySelectorAll('#tadika-form .step-indicator');
+                stepIndicators[2].classList.add('step-active');
+            } else if (type === 'persendirian') {
+                // Validate persendirian info
+                const persendirianTadika = document.getElementById('persendirian-tadika').value;
+                const persendirianName = document.getElementById('persendirian-name').value;
+                const persendirianIC = document.getElementById('persendirian-ic').value;
+                const persendirianDOB = document.getElementById('persendirian-dob').value;
+                const persendirianGender = document.getElementById('persendirian-gender').value;
+                const persendirianParentName = document.getElementById('persendirian-parent-name').value;
+                const persendirianParentPhone = document.getElementById('persendirian-parent-phone').value;
+                const persendirianEmail = document.getElementById('persendirian-email').value;
+                
+                if (!persendirianTadika || !persendirianName || !persendirianIC || !persendirianDOB || 
+                    !persendirianGender || !persendirianParentName || !persendirianParentPhone || !persendirianEmail) {
+                    alert('Sila lengkapkan semua maklumat yang diperlukan.');
+                    return;
+                }
+                
+                // Generate summary
+                generatePersendirianSummary();
+                
+                // Show confirmation section
+                document.getElementById('persendirian-info-form').classList.add('hidden');
+                document.getElementById('persendirian-confirmation').classList.remove('hidden');
+                
+                // Update step indicators
+                const stepIndicators = document.querySelectorAll('#persendirian-form .step-indicator');
+                stepIndicators[1].classList.add('step-active');
+            }
+        }
+        
+        function generateTadikaSummary() {
+            const tadikaName = document.getElementById('tadika-name').value;
+            const tadikaAddress = document.getElementById('tadika-address').value;
+            const tadikaPhone = document.getElementById('tadika-phone').value;
+            const tadikaEmail = document.getElementById('tadika-email').value;
+            const teacherName = document.getElementById('teacher-name').value;
+            
+            let summaryHTML = `
+                <div class="mb-6">
+                    <h4 class="font-bold text-[#244F4B] mb-2">Maklumat Tadika:</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <p><span class="font-medium">Nama Tadika:</span> ${tadikaName}</p>
+                            <p><span class="font-medium">Alamat:</span> ${tadikaAddress}</p>
+                            <p><span class="font-medium">No. Telefon:</span> ${tadikaPhone}</p>
+                        </div>
+                        <div>
+                            <p><span class="font-medium">Emel:</span> ${tadikaEmail}</p>
+                            <p><span class="font-medium">Guru Besar / Pengurus:</span> ${teacherName}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-[#244F4B] mb-2">Senarai Calon (${studentCount}):</h4>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-white">
+                            <thead>
+                                <tr class="bg-[#40E0D0] bg-opacity-20">
+                                    <th class="py-2 px-4 text-left">Bil.</th>
+                                    <th class="py-2 px-4 text-left">Nama</th>
+                                    <th class="py-2 px-4 text-left">No. MyKid</th>
+                                    <th class="py-2 px-4 text-left">Tarikh Lahir</th>
+                                    <th class="py-2 px-4 text-left">Jantina</th>
+                                    <th class="py-2 px-4 text-left">Nama Ibu/Bapa/Penjaga</th>
+                                    <th class="py-2 px-4 text-left">No. Telefon</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+            `;
+            
+            for (let i = 1; i <= studentCount; i++) {
+                const studentName = document.getElementById(`student-name-${i}`).value;
+                const studentIC = document.getElementById(`student-ic-${i}`).value;
+                const studentDOB = document.getElementById(`student-dob-${i}`).value;
+                const studentGender = document.getElementById(`student-gender-${i}`).value;
+                const parentName = document.getElementById(`parent-name-${i}`).value;
+                const parentPhone = document.getElementById(`parent-phone-${i}`).value;
+                
+                const formattedDOB = new Date(studentDOB).toLocaleDateString('ms-MY');
+                
+                summaryHTML += `
+                    <tr class="${i % 2 === 0 ? 'bg-[#40E0D0] bg-opacity-5' : ''}">
+                        <td class="py-2 px-4">${i}</td>
+                        <td class="py-2 px-4">${studentName}</td>
+                        <td class="py-2 px-4">${studentIC}</td>
+                        <td class="py-2 px-4">${formattedDOB}</td>
+                        <td class="py-2 px-4">${studentGender}</td>
+                        <td class="py-2 px-4">${parentName}</td>
+                        <td class="py-2 px-4">${parentPhone}</td>
+                    </tr>
+                `;
+            }
+            
+            summaryHTML += `
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('tadika-summary').innerHTML = summaryHTML;
+        }
+        
+        function generatePersendirianSummary() {
+            const persendirianTadika = document.getElementById('persendirian-tadika').value;
+            const persendirianName = document.getElementById('persendirian-name').value;
+            const persendirianIC = document.getElementById('persendirian-ic').value;
+            const persendirianDOB = document.getElementById('persendirian-dob').value;
+            const persendirianGender = document.getElementById('persendirian-gender').value;
+            const persendirianParentName = document.getElementById('persendirian-parent-name').value;
+            const persendirianParentPhone = document.getElementById('persendirian-parent-phone').value;
+            const persendirianEmail = document.getElementById('persendirian-email').value;
+            
+            const formattedDOB = new Date(persendirianDOB).toLocaleDateString('ms-MY');
+            
+            const summaryHTML = `
+                <div class="mb-6">
+                    <h4 class="font-bold text-[#244F4B] mb-2">Maklumat Calon:</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <p><span class="font-medium">Nama Tadika:</span> ${persendirianTadika}</p>
+                            <p><span class="font-medium">Nama Penuh:</span> ${persendirianName}</p>
+                            <p><span class="font-medium">No. MyKid:</span> ${persendirianIC}</p>
+                        </div>
+                        <div>
+                            <p><span class="font-medium">Tarikh Lahir:</span> ${formattedDOB}</p>
+                            <p><span class="font-medium">Jantina:</span> ${persendirianGender}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-[#244F4B] mb-2">Maklumat Ibu/Bapa/Penjaga:</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <p><span class="font-medium">Nama:</span> ${persendirianParentName}</p>
+                            <p><span class="font-medium">No. Telefon:</span> ${persendirianParentPhone}</p>
+                        </div>
+                        <div>
+                            <p><span class="font-medium">Emel:</span> ${persendirianEmail}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('persendirian-summary').innerHTML = summaryHTML;
+        }
+        
+        // Form submission
+        function submitForm(type) {
+            // Show loading indicator
+            document.getElementById('loading-indicator').classList.remove('hidden');
+            
+            // Create a form element
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = scriptURL;
+            form.target = 'hidden-iframe';
+            
+            if (type === 'tadika') {
+                const tadikaName = document.getElementById('tadika-name').value;
+                const tadikaAddress = document.getElementById('tadika-address').value;
+                const tadikaPhone = document.getElementById('tadika-phone').value;
+                const tadikaEmail = document.getElementById('tadika-email').value;
+                const teacherName = document.getElementById('teacher-name').value;
+                
+                // Add tadika info to form
+                appendInput(form, 'type', 'tadika');
+                appendInput(form, 'tadika_name', tadikaName);
+                appendInput(form, 'tadika_address', tadikaAddress);
+                appendInput(form, 'tadika_phone', tadikaPhone);
+                appendInput(form, 'tadika_email', tadikaEmail);
+                appendInput(form, 'teacher_name', teacherName);
+                appendInput(form, 'student_count', studentCount);
+                
+                // Add student info to form
+                for (let i = 1; i <= studentCount; i++) {
+                    const studentName = document.getElementById(`student-name-${i}`).value;
+                    const studentIC = document.getElementById(`student-ic-${i}`).value;
+                    const studentDOB = document.getElementById(`student-dob-${i}`).value;
+                    const studentGender = document.getElementById(`student-gender-${i}`).value;
+                    const parentName = document.getElementById(`parent-name-${i}`).value;
+                    const parentPhone = document.getElementById(`parent-phone-${i}`).value;
+                    
+                    // Format date to DD/MM/YYYY
+                    const dob = new Date(studentDOB);
+                    const formattedDOB = `${dob.getDate().toString().padStart(2, '0')}/${(dob.getMonth() + 1).toString().padStart(2, '0')}/${dob.getFullYear()}`;
+                    
+                    appendInput(form, `student_name_${i}`, studentName);
+                    appendInput(form, `student_ic_${i}`, studentIC);
+                    appendInput(form, `student_dob_${i}`, formattedDOB);
+                    appendInput(form, `student_gender_${i}`, studentGender);
+                    appendInput(form, `parent_name_${i}`, parentName);
+                    appendInput(form, `parent_phone_${i}`, parentPhone);
+                }
+                
+            } else if (type === 'persendirian') {
+                const persendirianTadika = document.getElementById('persendirian-tadika').value;
+                const persendirianName = document.getElementById('persendirian-name').value;
+                const persendirianIC = document.getElementById('persendirian-ic').value;
+                const persendirianDOB = document.getElementById('persendirian-dob').value;
+                const persendirianGender = document.getElementById('persendirian-gender').value;
+                const persendirianParentName = document.getElementById('persendirian-parent-name').value;
+                const persendirianParentPhone = document.getElementById('persendirian-parent-phone').value;
+                const persendirianEmail = document.getElementById('persendirian-email').value;
+                
+                // Format date to DD/MM/YYYY
+                const dob = new Date(persendirianDOB);
+                const formattedDOB = `${dob.getDate().toString().padStart(2, '0')}/${(dob.getMonth() + 1).toString().padStart(2, '0')}/${dob.getFullYear()}`;
+                
+                // Add persendirian info to form
+                appendInput(form, 'type', 'persendirian');
+                appendInput(form, 'tadika_name', persendirianTadika);
+                appendInput(form, 'student_name', persendirianName);
+                appendInput(form, 'student_ic', persendirianIC);
+                appendInput(form, 'student_dob', formattedDOB);
+                appendInput(form, 'student_gender', persendirianGender);
+                appendInput(form, 'parent_name', persendirianParentName);
+                appendInput(form, 'parent_phone', persendirianParentPhone);
+                appendInput(form, 'email', persendirianEmail);
+            }
+            
+            // Add form to document and submit
+            document.body.appendChild(form);
+            
+            // Set up iframe onload handler
+            document.getElementById('hidden-iframe').onload = function() {
+                setTimeout(function() {
+                    document.getElementById('loading-indicator').classList.add('hidden');
+                    
+                    if (type === 'tadika') {
+                        document.getElementById('tadika-form').classList.add('hidden');
+                    } else {
+                        document.getElementById('persendirian-form').classList.add('hidden');
+                    }
+                    
+                    // Generate a reference number
+                    const refNumber = 'REF-' + new Date().getFullYear() + Math.floor(Math.random() * 100000).toString().padStart(5, '0');
+                    document.getElementById('reference-number').textContent = refNumber;
+                    document.getElementById('success-message').classList.remove('hidden');
+                    
+                    // Remove the form
+                    document.body.removeChild(form);
+                }, 1500);
+            };
+            
+            // Submit the form
+            form.submit();
+        }
+        
+        // Helper function to append input to form
+        function appendInput(form, name, value) {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = name;
+            input.value = value;
+            form.appendChild(input);
+        }
+        
+        function resetForm() {
+            // Reset the form and go back to registration type selection
+            document.getElementById('success-message').classList.add('hidden');
+            document.getElementById('error-message').classList.add('hidden');
+            document.getElementById('registration-type-section').classList.remove('hidden');
+            
+            // Reset all form fields
+            document.querySelectorAll('input, select, textarea').forEach(input => {
+                input.value = '';
+            });
+            
+            // Reset step indicators
+            document.querySelectorAll('.step-indicator').forEach((step, index) => {
+                if (index === 0) {
+                    step.classList.add('step-active');
+                } else {
+                    step.classList.remove('step-active');
+                }
+            });
+            
+            // Reset form sections
+            document.getElementById('tadika-info-form').classList.remove('hidden');
+            document.getElementById('tadika-student-form').classList.add('hidden');
+            document.getElementById('tadika-confirmation').classList.add('hidden');
+            document.getElementById('persendirian-info-form').classList.remove('hidden');
+            document.getElementById('persendirian-confirmation').classList.add('hidden');
+        }
+        
+        // Enable submit buttons when checkbox is checked
+        document.getElementById('tadika-confirm-checkbox').addEventListener('change', function() {
+            document.getElementById('tadika-submit-btn').disabled = !this.checked;
+            document.getElementById('tadika-submit-btn').classList.toggle('opacity-50', !this.checked);
+            document.getElementById('tadika-submit-btn').classList.toggle('cursor-not-allowed', !this.checked);
+        });
+        
+        document.getElementById('persendirian-confirm-checkbox').addEventListener('change', function() {
+            document.getElementById('persendirian-submit-btn').disabled = !this.checked;
+            document.getElementById('persendirian-submit-btn').classList.toggle('opacity-50', !this.checked);
+            document.getElementById('persendirian-submit-btn').classList.toggle('cursor-not-allowed', !this.checked);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'967980a571fc1ecc',t:'MTc1MzkyNzIzMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
